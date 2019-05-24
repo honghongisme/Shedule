@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_tv"
+            android:text="请选择导入的学期"
+            android:gravity="center_horizontal"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <com.itheima.wheelpicker.WheelPicker
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:wheel_atmospheric="true"
+                app:wheel_curved="true"
+                app:wheel_cyclic="false"
+                app:wheel_selected_item_position="1"
+                app:wheel_item_text_color="#66ff0000"
+                app:wheel_selected_item_text_color="#6600ffff"
+                android:layout_weight="1"
+                android:id="@+id/year_picker"/>
+
+        <com.itheima.wheelpicker.WheelPicker
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:wheel_atmospheric="true"
+                app:wheel_curved="true"
+                app:wheel_cyclic="false"
+                app:wheel_selected_item_position="1"
+                app:wheel_item_text_color="#66ff0000"
+                app:wheel_selected_item_text_color="#6600ffff"
+                android:layout_weight="1"
+                android:id="@+id/semester_picker"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm"
+                android:layout_weight="1"
+                android:text="确定"
+                android:gravity="center_horizontal"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel"
+                android:layout_weight="1"
+                android:text="取消"
+                android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</LinearLayout>

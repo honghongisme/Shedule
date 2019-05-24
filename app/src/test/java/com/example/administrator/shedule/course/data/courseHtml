@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head></head>
+<body>
+│  │  │
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> │
+<title>教务管理系统</title> │ │ │
+
+<ul class="ui_nav_breadcrumb_style02 ul_fixed">
+    │
+    <li><a href="#" class="homepage"></a><span class="divider"></span></li> │ │
+    <!--    --> │
+</ul> │
+<div class="p10">
+    │
+    <div class="div_body">
+        │ │
+        <div class="tableGroup otherInfo">
+            │
+            <div class="NoPrint mainQuery" style="text-align: right; padding: 2px 30px 2px 2px;">
+                │ 学年学期: │ │
+                <select id="xnxqdm" name="xnxqdm"> │ │ <option selected="" value="2018-2019-2">2018-2019学年第二学期</option> │ │ <option value="2018-2019-1">2018-2019学年第一学期</option> │ │ <option value="2017-2018-3">2017-2018学年第三学期</option> │ │ <option value="2017-2018-2">2017-2018学年第二学期</option> │ │ <option value="2017-2018-1">2017-2018学年第一学期</option> │ │ <option value="2016-2017-3">2016-2017学年第三学期</option> │ │ <option value="2016-2017-2">2016-2017学年第二学期</option> │ │ <option value="2016-2017-1">2016-2017学年第一学期</option> │ │ </select> │ &nbsp;&nbsp;
+                <button class="ui_btn ui_btn_primary" onclick="refreshFunc()"><i class="icon_search icon_white"></i>查看</button> │
+            </div> │ │
+            <div>
+                │
+                <table name="" id="1" class="CourseFormTable" style="">
+                    │
+                    <caption>
+                        &nbsp;2018-2019学年第二学期 詹伟丽 同学课表
+                        <span class="spanFloatRight"><a style="cursor: pointer;" onclick="javascript: try{printFunc();} catch(e){}">打印</a></span>
+                    </caption>
+                    <tbody>
+                    <tr>
+                        <th class="firstHiddenTd"></th>
+                        <th>节次</th>
+                        <th>星期一</th>
+                        <th>星期二</th>
+                        <th>星期三</th>
+                        <th>星期四</th>
+                        <th>星期五</th>
+                        <th>星期六</th>
+                        <th>星期日</th>
+                    </tr> │
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第1节
+                            <div>
+                                (08:00~08:45)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;编译原理[02] &nbsp;1-16周 &nbsp;(第1-2节)<br />刘凤连<br />综合 28-A209 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第2节
+                            <div>
+                                (08:55~09:40)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第3节
+                            <div>
+                                (10:10~10:55)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;Web应用程序设计与开发[02] &nbsp;1-13周 &nbsp;(第3-4节)<br />杨文军<br />综合 28-B105 │ </td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;计算机网络原理[03] &nbsp;1-16周 &nbsp;(第3-4节)<br />赵春蕾<br />综合 28-B102 │ </td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;Web应用程序设计与开发[02] &nbsp;1-13周 &nbsp;(第3-4节)<br />杨文军<br />综合 28-A409 │ </td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;数字图像处理[03] &nbsp;1-12周 &nbsp;(第3-4节)<br />杨淑莹<br />综合 28-A105 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第4节
+                            <div>
+                                (11:05~11:50)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第5节
+                            <div>
+                                (14:00~14:45)&nbsp;
+                            </div>&amp;nb │ sp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;编译原理[02] &nbsp;1-16周 &nbsp;(第5-6节)<br />刘凤连<br />综合 28-A101 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;计算机网络原理[03] &nbsp;1-16周(双) &nbsp;(第5-6节)<br />赵春蕾<br />综合 28-B102 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第6节
+                            <div>
+                                (14:55~15:40)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第7节
+                            <div>
+                                (16:10~16:55)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;数字图像处理[03] &nbsp;1-12周 &nbsp;(第7-8节)<br />杨淑莹<br />综合 28-A105 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="2"> │
+                            <div style="text-align:left;">
+                                <div class="fcSpanDiv"></div>
+                            </div>&nbsp;创业基础[43] &nbsp;3-3周,6-6周,12-13周 &nbsp;(第7-8节)<br />王婷<br />6号楼 6-0203 │ </td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第8节
+                            <div>
+                                (17:05~17:50)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第9节
+                            <div>
+                                (18:30~19:15)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第10节
+                            <div>
+                                (19:25~20:10)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="1" rowspan="1" style="text-align:center;">第11节
+                            <div>
+                                (20:20~21:05)&nbsp;
+                            </div>&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                        <td colspan="1" rowspan="1">&nbsp;</td>
+                    </tr> │ │
+                    <tr>
+                        <td class="firstHiddenTd"></td>
+                        <td colspan="9" class="NotFixCourseTableTd">
+                            <table class="NoFitCourse" style="vertical-align:middle">
+                                │
+                                <caption>
+                                    &nbsp;未安排时间课程
+                                </caption>
+                                <tbody>
+                                <tr>
+                                    <th>课程名称</th>
+                                    <th>教学周次</th>
+                                    <th>上课老师</th>
+                                    <th>备注</th>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;信息系统设计[03]&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;郝刚</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;专业创新实践[03]&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;王京辉</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;网络综合设计[03]&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;赵春蕾</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                </tbody>
+                            </table></td>
+                    </tr> │
+                    </tbody>
+                </table> │
+            </div> │ │ │
+        </div> │
+        <div id="detailMsg" title="调课记录明细" style="display:none"></div> │ │ │
+    </div> │
+</div> │  │
+</body>
+</html>
