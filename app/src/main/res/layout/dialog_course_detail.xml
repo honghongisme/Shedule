@@ -3,7 +3,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:paddingLeft="10dp">
+              android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <TextView
             android:layout_width="match_parent"
@@ -11,12 +12,14 @@
             android:text="课程详情"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+        android:textSize="18sp"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title_tv"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+        android:textSize="19sp"/>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="老师"
-                android:drawableLeft="@drawable/ic_person_black_24dp"/>
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="5dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="节数"
-                android:drawableLeft="@drawable/ic_num_black_24dp"/>
+                android:drawableLeft="@drawable/ic_num_black_24dp"
+            android:drawablePadding="5dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -68,7 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="周数"
-                android:drawableLeft="@drawable/ic_week_black_24dp"/>
+                android:drawableLeft="@drawable/ic_week_black_24dp"
+            android:drawablePadding="5dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -88,7 +94,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="地点"
-                android:drawableLeft="@drawable/ic_place_black_24dp"/>
+                android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:drawablePadding="5dp"/>
 
         <TextView
                 android:layout_width="wrap_content"

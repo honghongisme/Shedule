@@ -1,8 +1,11 @@
 package com.example.administrator.shedule.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -36,6 +39,13 @@ public class CourseDetailDialog extends Dialog {
         setContentView(R.layout.dialog_course_detail);
         ButterKnife.bind(this);
         setCanceledOnTouchOutside(true);//点击外部Dialog消失
+
+        WindowManager windowManager = ((Activity)mContext).getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.width = (int) (display.getWidth() * 0.8);
+        lp.height = (int) (display.getHeight() * 0.5);
+        getWindow().setAttributes(lp);
     }
 
     public void init(Course course) {

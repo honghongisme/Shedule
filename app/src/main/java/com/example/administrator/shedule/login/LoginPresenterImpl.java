@@ -12,7 +12,6 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
     private LoginNetManager mManager;
     private LoginLocalModel mModel;
     private LoginContract.View mView;
-    private int i = 0;
 
     public LoginPresenterImpl(LoginContract.View view) {
         this.mView = view;
@@ -27,8 +26,6 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
             public void onSuccess(User user) {
                 // 保存到本地
                 mModel.saveUser((Context) mView, user);
-                // 保存到application
-                ((MyApplication)((LoginActivity)mView).getApplication()).setUser(user);
                 mView.onLoginSuccess();
             }
 

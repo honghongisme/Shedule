@@ -10,7 +10,7 @@ import java.util.List;
 public interface MainContract {
 
     interface View extends BaseView<Presenter> {
-        void refreshGridLayout(List<Course> courses);
+        void refreshGridLayout(List<Course> courses, User user);
         void onLoadDataFailed();
     }
 

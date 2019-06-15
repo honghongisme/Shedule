@@ -7,11 +7,24 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ParseCourseDataManager {
 
+
+
+
+    /**
+     * 解析含有课程信息的html
+     * 课程添加基本颜色
+     * @param html
+     * @return
+     */
     public static List<Course> parseDataHtml(String html) {
+        String[] courseBaseColor = {"#E3CF4C", "#59DE45", "#6DA1DE", "#FF98CE", "#CD98FF", "#D5E4B9", "#FFAC38", "#EC602B", "#EE875D", "#1AAE5F"};
+        Map<String, String> colorInfoMap = new HashMap<>();
         List<Course> list = new ArrayList<>();
         Elements trs = Jsoup.parse(html).select("table.CourseFormTable tr");
         // 去掉头尾无用信息
@@ -60,6 +73,14 @@ public class ParseCourseDataManager {
                     } else {
                         course.setSingleWeekCourse(true);
                         course.setDoubleWeekCourse(true);
+                    }
+                    // 添加颜色信息
+                    if (colorInfoMap.containsKey(course.getTitle())) {
+                        course.setColor(colorInfoMap.get(course.getTitle()));
+                    } else {
+                        String color = courseBaseColor[colorInfoMap.size() % courseBaseColor.length];
+                        colorInfoMap.put(course.getTitle(), color);
+                        course.setColor(color);
                     }
                     list.add(course);
                 }

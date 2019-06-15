@@ -2,60 +2,58 @@ package com.example.administrator.shedule.course;
 
 public class GridConfig {
 
-    // 最左边表示节数的一列权重
-    private float leftHeaderWeight;
     // 节数列左右margin
-    private int leftHeaderLeftMargin;
-    private int leftHeaderRightMargin;
-    // 课程格子权重
-    private float singleCourseWeight;
+    private int leftHeaderLeftRightMargin;
     // 课程格子左右margin
-    private int singleCourseLeftMargin;
-    private int singleCourseRightMargin;
-    // 课程格子padding
-    private int singleCourseVerticalPadding;
-    private int singleCourseHorizontalPadding;
+    private int singleCourseLeftRightMargin;
+    // 课程格子上下margin
+    private int singleCourseTopBottomMargin;
+    //
+    private int singleCourseLeftRightPadding;
+    private int singleCourseTopBottomPadding;
 
-    public GridConfig(float leftHeaderWeight, int leftHeaderLeftMargin, int leftHeaderRightMargin, float singleCourseWeight, int singleCourseLeftMargin, int singleCourseRightMargin, int singleCourseVerticalPadding, int singleCourseHorizontalPadding) {
-        this.leftHeaderWeight = leftHeaderWeight;
-        this.leftHeaderLeftMargin = leftHeaderLeftMargin;
-        this.leftHeaderRightMargin = leftHeaderRightMargin;
-        this.singleCourseWeight = singleCourseWeight;
-        this.singleCourseLeftMargin = singleCourseLeftMargin;
-        this.singleCourseRightMargin = singleCourseRightMargin;
-        this.singleCourseVerticalPadding = singleCourseVerticalPadding;
-        this.singleCourseHorizontalPadding = singleCourseHorizontalPadding;
+    public int getLeftHeaderLeftRightMargin() {
+        return leftHeaderLeftRightMargin;
     }
 
-    public float getLeftHeaderWeight() {
-        return leftHeaderWeight;
+    public GridConfig setLeftHeaderLeftRightMargin(int leftHeaderLeftRightMargin) {
+        this.leftHeaderLeftRightMargin = leftHeaderLeftRightMargin;
+        return this;
     }
 
-    public int getLeftHeaderLeftMargin() {
-        return leftHeaderLeftMargin;
+    public int getSingleCourseLeftRightMargin() {
+        return singleCourseLeftRightMargin;
     }
 
-    public int getLeftHeaderRightMargin() {
-        return leftHeaderRightMargin;
+    public GridConfig setSingleCourseLeftRightMargin(int singleCourseLeftRightMargin) {
+        this.singleCourseLeftRightMargin = singleCourseLeftRightMargin;
+        return this;
     }
 
-    public float getSingleCourseWeight() {
-        return singleCourseWeight;
+    public int getSingleCourseTopBottomMargin() {
+        return singleCourseTopBottomMargin;
     }
 
-    public int getSingleCourseLeftMargin() {
-        return singleCourseLeftMargin;
+    public GridConfig setSingleCourseTopBottomMargin(int singleCourseTopBottomMargin) {
+        this.singleCourseTopBottomMargin = singleCourseTopBottomMargin;
+        return this;
     }
 
-    public int getSingleCourseRightMargin() {
-        return singleCourseRightMargin;
+    public int getSingleCourseLeftRightPadding() {
+        return singleCourseLeftRightPadding;
     }
 
-    public int getSingleCourseVerticalPadding() {
-        return singleCourseVerticalPadding;
+    public GridConfig setSingleCourseLeftRightPadding(int singleCourseLeftRightPadding) {
+        this.singleCourseLeftRightPadding = singleCourseLeftRightPadding;
+        return this;
     }
 
-    public int getSingleCourseHorizontalPadding() {
-        return singleCourseHorizontalPadding;
+    public int getSingleCourseTopBottomPadding() {
+        return singleCourseTopBottomPadding;
+    }
+
+    public GridConfig setSingleCourseTopBottomPadding(int singleCourseTopBottomPadding) {
+        this.singleCourseTopBottomPadding = singleCourseTopBottomPadding;
+        return this;
     }
 }

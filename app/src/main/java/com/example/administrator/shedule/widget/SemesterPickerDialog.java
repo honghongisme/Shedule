@@ -34,10 +34,12 @@ public class SemesterPickerDialog extends Dialog implements WheelPicker.OnItemSe
     WheelPicker yearPicker;
     @BindView(R.id.semester_picker)
     WheelPicker semesterPicker;
+    private String account;
 
-    public SemesterPickerDialog(@NonNull Context context) {
+    public SemesterPickerDialog(@NonNull Context context, String account) {
         super(context);
         this.mContext = context;
+        this.account = account;
     }
 
     @Override
@@ -46,10 +48,16 @@ public class SemesterPickerDialog extends Dialog implements WheelPicker.OnItemSe
         setContentView(R.layout.dialog_semester_picker);
         ButterKnife.bind(this);
         setCanceledOnTouchOutside(true);
+
+        WindowManager windowManager = ((Activity)mContext).getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.width = (int) (display.getWidth() * 0.8);
+        lp.height = (int) (display.getHeight() * 0.5);
+        getWindow().setAttributes(lp);
     }
 
     public void init() {
-        String account = (((MyApplication)mContext.getApplicationContext()).getUser()).getAccount();
         PickerDataManager manager = new PickerDataManager(account);
 
         yearPicker.setData(manager.getYears());

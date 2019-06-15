@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/account_et"
-                android:text="20162201"
+                android:text=""
                 android:hint="学号"/>
 
         <EditText
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/password_et"
                 android:inputType="textPassword"
-                android:text="19980609qqzwl"
+                android:text=""
                 android:hint="密码"/>
 
         <Button

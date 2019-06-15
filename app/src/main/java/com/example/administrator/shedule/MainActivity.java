@@ -9,7 +9,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.AdapterView;
@@ -26,7 +25,7 @@ import com.example.administrator.shedule.bean.Course;
 import com.example.administrator.shedule.login.LoginActivity;
 import com.example.administrator.shedule.login.local.LoginLocalModel;
 import com.example.administrator.shedule.bean.User;
-import com.example.administrator.shedule.util.TextViewWidthUtil;
+import com.example.administrator.shedule.util.TextViewSizeUtil;
 import com.example.administrator.shedule.widget.CourseDetailDialog;
 import com.example.administrator.shedule.widget.SemesterPickerDialog;
 import com.orhanobut.logger.Logger;
@@ -35,7 +34,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
 
-    private static final int COURSE_TAG = 1;
     private static final int GET_DATA_SUCCESS = 2;
 
     @BindView(R.id.toolbar)
@@ -48,11 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Spinner mWeekSwitchSpinner;
 
     // 正在展示的周
-    private int isShownWeek = 1;
     private String[] mRowHeaderData = {"周一", "周二", "周三", "周四", "周五", "周六", "周日",};
     private GridConfig mConfig;
     private MainPresenterImpl mPresenter;
     private List<Course> mCourseData;
+    // 通过屏幕尺寸和权重计算出来的课程格子宽高
+    private int mWidth;
+    private int mHeight;
+    private User mUser;
+    private LoginLocalModel mLoginLocalModel;
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
@@ -60,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.handleMessage(msg);
             switch (msg.what) {
                 case GET_DATA_SUCCESS:
+                    mUser.setShowingWeek(msg.arg1);
+                    mLoginLocalModel.saveUser(MainActivity.this, mUser);
                     drawCourse(msg.arg1, (List<Course>) msg.obj);
                     break;
             }
@@ -76,20 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init();
 
         mPresenter = new MainPresenterImpl(this);
-        User user = ((MyApplication)getApplication()).getUser();
-        if (user != null) { // 登录跳转过来的
-            // 提示帮助
-        } else {
-            user = new LoginLocalModel().loadUser(this);
-            if (user != null) {
-                ((MyApplication)getApplication()).setUser(user);
-                if (user.getShowingSemester() != null) { // 已导入学期
-                    mPresenter.getData(user.getShowingSemester(), user);
-                } else { // 未导入学期
-                    // 提示导入学期
-                }
-            } else { // 用户不存在
-                // 提示登录
+        mLoginLocalModel = new LoginLocalModel();
+        mUser = mLoginLocalModel.loadUser(this);
+        if (mUser != null) { // 已登录过
+            if (mUser.getShowingSemester() != null) { // 已导入学期
+                mPresenter.getData(mUser.getShowingSemester(), mUser);
             }
         }
     }
@@ -110,8 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.new_course) {
-
-            if (((MyApplication)getApplication()).getUser() == null) {
+            if (mUser == null) {
                 startActivityForResult(new Intent(this, LoginActivity.class), 0);
                 Toast.makeText(getApplicationContext(), "请先登录！", Toast.LENGTH_LONG).show();
             } else {
@@ -122,7 +117,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void init() {
-        mConfig = new GridConfig(0.5f, 2, 2, 1, 5, 5, 4, 5);
+        mConfig = new GridConfig()
+                .setLeftHeaderLeftRightMargin(2)
+                .setSingleCourseLeftRightMargin(5)
+                .setSingleCourseTopBottomMargin(4)
+                .setSingleCourseTopBottomPadding(13)
+                .setSingleCourseLeftRightPadding(5);
+        mWidth = TextViewSizeUtil.getTextViewWidth(this, mConfig);
+        mHeight = TextViewSizeUtil.getTextViewHeight(this, mConfig);
         mWeekSwitchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -146,9 +148,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (String s : mRowHeaderData) {
             TextView tv = new TextView(this);
             tv.setText(s);
-            tv.setBackgroundColor(Color.RED);
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(0), GridLayout.spec(i, 1.0f));
-            params.setGravity(Gravity.FILL_HORIZONTAL & Gravity.CENTER);
+            tv.setWidth(mWidth);
+            tv.setGravity(Gravity.CENTER);
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(0), GridLayout.spec(i));
+            params.setGravity(Gravity.CENTER);
             params.setMargins(5, 5, 5, 5);
             mRowHeaderGl.addView(tv, params);
             i++;
@@ -156,15 +159,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initColHeader() {
-        for (int i = 0; i < mCourseGl.getRowCount(); i++) {
-            TextView tv = new TextView(this);
+        for (int i = 0, j = 1; i < mCourseGl.getRowCount(); i++, j+=2) {
+            View v = getLayoutInflater().inflate(R.layout.course_num, null);
+            TextView top = v.findViewById(R.id.top_num_tv);
+            top.setText(j + "");
+            top.setHeight(mHeight/2);
+            top.setWidth(mWidth/2);
+            TextView bottom = v.findViewById(R.id.bottom_num_tv);
+            bottom.setText((j + 1) + "");
+            bottom.setHeight(mHeight/2);
+            bottom.setWidth(mWidth/2);
             GridLayout.LayoutParams params;
-            tv.setText((i + 1) + "");
-            tv.setBackgroundColor(Color.GREEN);
-            params = new GridLayout.LayoutParams(GridLayout.spec(i, mConfig.getLeftHeaderWeight()), GridLayout.spec(0));
+            params = new GridLayout.LayoutParams(GridLayout.spec(i, 0.5f), GridLayout.spec(0));
             params.setGravity(Gravity.FILL_VERTICAL);
-            params.setMargins(mConfig.getLeftHeaderLeftMargin(), 2, mConfig.getLeftHeaderRightMargin(), 2);
-            mCourseGl.addView(tv, params);
+            params.setMargins(mConfig.getLeftHeaderLeftRightMargin(), 0, mConfig.getLeftHeaderLeftRightMargin(), 0);
+            mCourseGl.addView(v, params);
         }
     }
 
@@ -183,19 +192,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if (flag) {
                 Logger.d(course);
-                TextView tv = new TextView(this);
+                View v = getLayoutInflater().inflate(R.layout.course_grid, null);
+                TextView tv = v.findViewById(R.id.content_tv);
                 GridLayout.LayoutParams params;
                 tv.setText(course.getTitle() + "\n" + course.getLocation());
-                tv.setMaxWidth(TextViewWidthUtil.getTextViewWidth(this, mConfig));
-                tv.setPadding(mConfig.getSingleCourseHorizontalPadding(), mConfig.getSingleCourseVerticalPadding(), mConfig.getSingleCourseHorizontalPadding(), mConfig.getSingleCourseVerticalPadding());
-                tv.setBackgroundColor(Color.BLUE);
+                tv.setWidth(mWidth);
+                tv.setHeight(mHeight);
+                tv.setPadding(mConfig.getSingleCourseLeftRightPadding(), mConfig.getSingleCourseTopBottomPadding(), mConfig.getSingleCourseLeftRightPadding(), mConfig.getSingleCourseTopBottomPadding());
                 tv.setTextSize(12);
-                tv.setOnClickListener(this);
-                tv.setTag(course);
-                params = new GridLayout.LayoutParams(GridLayout.spec(course.getStartNum() - 1, 2, mConfig.getSingleCourseWeight()), GridLayout.spec(course.getWeekDayNum() + 1));
+                v.setBackgroundColor(Color.parseColor(course.getColor()));
+                v.setOnClickListener(this);
+                v.setTag(course);
+                params = new GridLayout.LayoutParams(GridLayout.spec((course.getStartNum() + 1) / 2 - 1), GridLayout.spec(course.getWeekDayNum() + 1));
                 params.setGravity(Gravity.FILL_VERTICAL);
-                params.setMargins(mConfig.getSingleCourseLeftMargin(), 2, mConfig.getSingleCourseRightMargin(), 2);
-                mCourseGl.addView(tv, params);
+                params.setMargins(mConfig.getSingleCourseLeftRightMargin(), mConfig.getSingleCourseTopBottomMargin(), mConfig.getSingleCourseLeftRightMargin(), mConfig.getSingleCourseTopBottomMargin());
+                mCourseGl.addView(v, params);
             }
         }
     }
@@ -215,18 +226,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         // 打开学期选择dialog
         Toast.makeText(getApplicationContext(), "登录成功！", Toast.LENGTH_SHORT).show();
+        mUser = mLoginLocalModel.loadUser(this);
         showSemesterPickerDialog();
     }
 
     public void showSemesterPickerDialog() {
-        SemesterPickerDialog dialog = new SemesterPickerDialog(MainActivity.this);
+        SemesterPickerDialog dialog = new SemesterPickerDialog(MainActivity.this, mUser.getAccount());
         dialog.show();
         dialog.init();
         dialog.setOnButtonClickListener(new SemesterPickerDialog.OnButtonClickListener() {
             @Override
             public void onClickPositiveButton(String year, String semester) {
                 Logger.d(year + semester);
-                mPresenter.getData(year, semester, ((MyApplication)getApplication()).getUser());
+                mPresenter.getData(year, semester, mUser);
             }
         });
     }
@@ -249,29 +261,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void refreshGridLayout(List<Course> courses) {
+    public void refreshGridLayout(List<Course> courses, User user) {
         mCourseData = courses;
-        isShownWeek = ((MyApplication)getApplication()).getUser().getShowingWeek();
-        if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
-            showCourse(isShownWeek, courses);
-        } else {
-            mHandler.sendMessage(mHandler.obtainMessage(GET_DATA_SUCCESS, isShownWeek, 0, courses));
+        if (user != null) {
+            mUser = user;
         }
-
+        if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
+            mWeekSwitchSpinner.setSelection(mUser.getShowingWeek() - 1);
+            showCourse(mUser.getShowingWeek(), courses);
+        } else {
+            mHandler.sendMessage(mHandler.obtainMessage(GET_DATA_SUCCESS, mUser.getShowingWeek(), 0, courses));
+        }
     }
 
     @Override
     public void onLoadDataFailed() {
 
     }
-
-  /*  public void test() {
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
-        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int i) {
-                return 0;
-            }
-        });
-    }*/
 }

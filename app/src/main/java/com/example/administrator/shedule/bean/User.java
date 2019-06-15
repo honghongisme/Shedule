@@ -42,10 +42,10 @@ public class User {
     public HashMap<String, String> getCookies() {
         return cookies;
     }
-
-    public void setCookies(HashMap<String, String> cookies) {
-        this.cookies = cookies;
+    public String getPassword() {
+        return password;
     }
+
 
     @Override
     public String toString() {

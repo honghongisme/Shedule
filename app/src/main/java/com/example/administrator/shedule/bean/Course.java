@@ -25,6 +25,7 @@ public class Course {
     // 周几(周一是0)
     private String weekDayStr;
     private int weekDayNum;
+    private String color;
 
     public int getWeekDayNum() {
         return weekDayNum;
@@ -114,6 +115,14 @@ public class Course {
         this.weekDayStr = weekDayStr;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -128,6 +137,7 @@ public class Course {
                 ", isDoubleWeekCourse=" + isDoubleWeekCourse +
                 ", weekDayStr='" + weekDayStr + '\'' +
                 ", weekDayNum=" + weekDayNum +
+                ", color='" + color + '\'' +
                 '}';
     }
 }

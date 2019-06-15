@@ -32,20 +32,18 @@ public class MainPresenterImpl implements MainContract.Presenter {
         // 本地查找
         final List<Course> courses = mStore.loadCourse(fileName, (Context) mView);
         if (courses == null) { // 请求网络数据
-            mCourseDataSourceManager.doRequest(user.getCookies(), UrlParseManager.parseToUrl(fileName), new OnCourseDataReqListener() {
+            mCourseDataSourceManager.doRequest(user, UrlParseManager.parseToUrl(fileName), new OnCourseDataReqListener() {
                 @Override
                 public void onSuccess(String html) {
                     // html转化为list
                     List<Course> data = ParseCourseDataManager.parseDataHtml(html);
                     // 保存到本地
                     mStore.saveCourse(fileName, data, (Context) mView);
-                    // 更新applicayion的user
                     user.setShowingSemester(fileName);
                     user.setShowingWeek(1);
-                    ((MyApplication)((MainActivity)mView).getApplication()).setUser(user);
                     new LoginLocalModel().saveUser((Context) mView, user);
                     // 通知view刷新视图
-                    mView.refreshGridLayout(data);
+                    mView.refreshGridLayout(data, user);
                 }
 
                 @Override
@@ -54,7 +52,7 @@ public class MainPresenterImpl implements MainContract.Presenter {
                 }
             });
         } else {
-            mView.refreshGridLayout(courses);
+            mView.refreshGridLayout(courses, null);
         }
     }
 

@@ -10,7 +10,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/title_tv"
             android:text="请选择导入的学期"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"/>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -21,35 +23,34 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:wheel_atmospheric="true"
-                app:wheel_curved="true"
+                app:wheel_curved="false"
                 app:wheel_cyclic="false"
                 app:wheel_selected_item_position="1"
-                app:wheel_item_text_color="#66ff0000"
-                app:wheel_selected_item_text_color="#6600ffff"
+                app:wheel_item_text_color="#ADB2C1"
+                app:wheel_selected_item_text_color="#000000"
                 android:layout_weight="1"
-                android:id="@+id/year_picker"/>
+                android:id="@+id/year_picker"
+                app:wheel_item_text_size="15sp"/>
 
         <com.itheima.wheelpicker.WheelPicker
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:wheel_atmospheric="true"
-                app:wheel_curved="true"
-                app:wheel_cyclic="false"
-                app:wheel_selected_item_position="1"
-                app:wheel_item_text_color="#66ff0000"
-                app:wheel_selected_item_text_color="#6600ffff"
-                android:layout_weight="1"
-                android:id="@+id/semester_picker"/>
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="false"
+            app:wheel_cyclic="false"
+            app:wheel_selected_item_position="1"
+            app:wheel_item_text_color="#ADB2C1"
+            app:wheel_selected_item_text_color="#000000"
+            android:layout_weight="1"
+            android:id="@+id/semester_picker"
+            app:wheel_item_text_size="15sp"/>
 
     </LinearLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
 
         <TextView
                 android:layout_width="0dp"
